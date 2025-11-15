@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #1e1e1e; color: white; }
+        input[type=text] { padding: 10px; font-size: 16px; width: 200px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        .error { color: red; }
+        .prediction { font-size: 20px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Stock Price Predictor</h1>
+    <form method="POST">
+        <input type="text" name="ticker" placeholder="Enter Ticker Symbol" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if error_msg %}
+        <p class="error">{{ error_msg }}</p>
+    {% endif %}
+
+    {% if prediction %}
+        <p class="prediction">{{ prediction }}</p>
+    {% endif %}
+
+    {% if chart_html %}
+        <div>{{ chart_html|safe }}</div>
+    {% endif %}
+</body>
+</html>
